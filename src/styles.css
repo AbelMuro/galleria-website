@@ -1,0 +1,30 @@
+@font-face {
+    font-family: 'libre baskerville';
+    src: url('./Assets/Fonts/LibreBaskerville-Regular.ttf');
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: 'libre baskerville';
+    src: url('./Assets/Fonts/LibreBaskerville-Bold.ttf');
+    font-weight: 700;
+}
+
+:root{
+    --font: 'libre baskerville';
+    --closest: 100;
+    --closer: 75;
+    --close: 50;
+    --far: 25;
+    --farthest: 1
+}
+
+body{
+    min-height: 100vh;
+    margin: 0px;
+}
+
+* {
+    box-sizing: border-box;
+    transition: all 0.2s linear;
+}
