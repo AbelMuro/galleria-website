@@ -1,8 +1,10 @@
 .home{
+    width: 1360px;
     display: grid;
     grid-template-columns: repeat(4, 310px);
     row-gap: 40px;
     column-gap: 40px;
+    margin: auto;
 }
 
 .painting{
