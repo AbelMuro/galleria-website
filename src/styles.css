@@ -13,6 +13,7 @@
 :root{
     --font: 'libre baskerville';
     --closest: 100;
+    --even-closer: 80;
     --closer: 75;
     --close: 50;
     --far: 25;
