@@ -1,14 +1,16 @@
 import React, {useState, useEffect} from 'react';
+import Gallery from './Gallery';
+import MediaButtons from './MediaButtons';
 import { useParams } from 'react-router-dom';
-import paintingData from '~/Assets/Data';
 import useMediaQuery from '~/Hooks/useMediaQuery.js';
-import icons from './icons';
 import styles from './styles.module.css';
+import { useSelector } from 'react-redux';
 
 function DisplayPainting() {
     const [mobile] = useMediaQuery('(max-width: 700px)');
     const {paintingName} = useParams();
-    const [painting, setPainting] = useState();
+    const allGalleries = useSelector(state => state.allGalleries);
+    const [gallery, setGallery] = useState();
 
     const handleImages = (images) => {
         let large = images.large;
@@ -18,41 +20,46 @@ function DisplayPainting() {
 
     useEffect(() => {
         const name = paintingName.replaceAll('-', ' ');
-        const paintingInfo = paintingData.filter((painting) => painting.name === name && painting)[0];
-        setPainting(paintingInfo);
+        const galleryInfo = allGalleries.filter((gallery) => gallery.name === name && gallery)[0];
+        setGallery(galleryInfo);
     }, [paintingName])
 
-    return painting && 
-            <main className={styles.painting}>
-                <section className={styles.painting_heading}>
-                    <button className={styles.painting_view}>
-                        <img src={icons['view']}/>
-                        View image
-                    </button>
-                    <img className={styles.painting_image} src={handleImages(painting.images.hero)}/>
-                    <div className={styles.painting_title}>
-                        <h1>
-                            {painting.name}
-                        </h1>
-                        <h2>
-                            {painting.artist.name}
-                        </h2>
-                    </div>
-                    <img className={styles.painting_author} src={painting.artist.image}/>
-                </section>
-                <section className={styles.painting_content}>
-                    <strong className={styles.painting_year}>
-                        {painting.year}
-                    </strong>
-                    <p className={styles.painting_desc}>
-                        {painting.description}
-                    </p>
-                    <a className={styles.painting_source} href={painting.source} target='blank'>
-                        Go to source
-                    </a>                       
-                </section>
-             
-            </main>
+    return (<>
+                {gallery && 
+                    <main className={styles.gallery}>
+                        <section className={styles.gallery_heading}>
+                            <Gallery image={gallery.images.gallery}/>
+                            <img className={styles.gallery_image} src={handleImages(gallery.images.hero)}/>
+                            <div className={styles.gallery_title}>
+                                <h1>
+                                    {gallery.name}
+                                </h1>
+                                <h2>
+                                    {gallery.artist.name}
+                                </h2>
+                            </div>
+                            <img className={styles.gallery_author} src={gallery.artist.image}/>
+                        </section>
+                        <section className={styles.gallery_content}>
+                            <strong className={styles.gallery_year}>
+                                {gallery.year}
+                            </strong>
+                            <p className={styles.gallery_desc}>
+                                {gallery.description}
+                            </p>
+                            <a className={styles.gallery_source} href={gallery.source} target='blank'>
+                                Go to source
+                            </a>                       
+                        </section>
+                    </main>}
+                    {gallery && 
+                        <MediaButtons 
+                            id={gallery.id} 
+                            title={gallery.name} 
+                            author={gallery.artist.name}
+                            setPainting={setGallery}/>}
+
+            </>)
 
     
 }

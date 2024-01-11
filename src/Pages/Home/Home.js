@@ -1,9 +1,10 @@
 import React from 'react';
-import paintingData from '~/Assets/Data';
+import {useSelector} from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import styles from './styles.module.css';
 
 function Home() {
+    const allGalleries = useSelector(state => state.allGalleries);
     const navigate = useNavigate();
 
     const handleSelect = (e) => {
@@ -14,19 +15,19 @@ function Home() {
 
     return(
         <main className={styles.home}>
-            {paintingData.map((painting) => {
-                const title = painting.name;
-                const author = painting.artist.name;
-                const url = painting.images.thumbnail;
+            {allGalleries.map((gallery) => {
+                const title = gallery.name;
+                const author = gallery.artist.name;
+                const url = gallery.images.thumbnail;
 
                 return(
-                    <div className={styles.painting}>
-                        <img className={styles.painting_image} src={url}/>
-                        <div className={styles.painting_content}>
-                            <h1 className={styles.painting_title}>
+                    <div className={styles.gallery}>
+                        <img className={styles.gallery_image} src={url}/>
+                        <div className={styles.gallery_content}>
+                            <h1 className={styles.gallery_title}>
                                 {title}
                             </h1>
-                            <p className={styles.painting_author}>
+                            <p className={styles.gallery_author}>
                                 {author}
                             </p>
                         </div>

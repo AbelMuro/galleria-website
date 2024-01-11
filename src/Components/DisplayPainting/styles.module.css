@@ -1,4 +1,4 @@
-.painting{
+.gallery{
     width: 1360px;
     padding-right: 125px;
     display: flex;
@@ -8,47 +8,18 @@
     position: relative;
 }
 
-.painting_heading{
+.gallery_heading{
     position: relative;
 }
 
-.painting_image{
+.gallery_image{
     width: 475px;
     height: 560px;
     display: block;
 }
 
-.painting_view{
-    position: absolute;
-    left: 16px;
-    bottom: 16px;
-    width: 152px;
-    height: 40px;
-    padding: 0px;
-    border: none;
-    background-color: rgba(0, 0, 0, 0.7546);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 14px;
-    color: #FFF;
-    text-align: right;
-    font-family: var(--font);
-    font-size: 0.625rem;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
-    letter-spacing: 2.143px;
-    text-transform: uppercase;
-    cursor: pointer;
-}
 
-.painting_view > img{
-    width: 12px;
-    height: 12px;
-}
-
-.painting_title{
+.gallery_title{
     position: absolute;
     z-index: var(--far);
     padding: 0px 0px 67px 65px;
@@ -62,7 +33,7 @@
     gap: 24px;
 }
 
-.painting_title h1{
+.gallery_title h1{
     margin: 0px;
     color: #000;
     font-family: var(--font);
@@ -72,7 +43,7 @@
     line-height: 64px; /* 114.286% */
 }
 
-.painting_title h2{
+.gallery_title h2{
     margin: 0px;
     color: #7D7D7D;
     font-family: var(--font);
@@ -80,9 +51,10 @@
     font-style: normal;
     font-weight: 400;
     line-height: normal;
+    white-space: nowrap;
 }
 
-.painting_author{
+.gallery_author{
     width: 128px;
     height: 128px;
     position: absolute;
@@ -91,12 +63,12 @@
     bottom: -64px;
 }
 
-.painting_content{
+.gallery_content{
     width: 350px;
     position: relative;
 }
 
-.painting_desc{
+.gallery_desc{
     margin: 0px;
     color: #7D7D7D;
     font-family: var(--font);
@@ -108,7 +80,7 @@
     z-index: var(--closer);
 }
 
-.painting_year{
+.gallery_year{
     color: #F3F3F3;
     text-align: right;
     font-family: var(--font);
@@ -122,7 +94,7 @@
     left: 0px;
 }
 
-.painting_source{
+.gallery_source{
     position: absolute;
     bottom: -92px;
     left: 0px;
@@ -137,12 +109,12 @@
     text-transform: uppercase;
 }
 
-.painting_source:hover{
+.gallery_source:hover{
     color: black;
 }
 
 @media(max-width: 1400px){
-    .painting{
+    .gallery{
         width: 93%;
         padding-right: 125px;
         gap: 0px;
@@ -151,109 +123,109 @@
 }
 
 @media(max-width: 1380px){
-    .painting{
+    .gallery{
         padding: 0px;
     }
 
-    .painting_year{
+    .gallery_year{
         font-size: 9.375rem;
         top: -100px;
     }
 
-    .painting_title{
+    .gallery_title{
         width: 345px;
         right: -280px;
     }   
 
-    .painting_title h1{
+    .gallery_title h1{
         font-size: 2.8125rem;
         line-height: 55px;
     }
 }
 
 @media(max-width: 1170px){
-    .painting_image{
+    .gallery_image{
         width: 375px;
         height: 460px;
     }
 
-    .painting_content{
+    .gallery_content{
         width: 300px;
     }
 
-    .painting_year{
+    .gallery_year{
         font-size: 8rem;  
         top: -90px; 
     }
-    .painting_title{
+    .gallery_title{
         width: 245px;
         right: -180px;
     }
 
-    .painting_title h1{
+    .gallery_title h1{
         font-size: 2.4rem;
     }
 
 }
 
 @media(max-width: 950px){
-    .painting{
+    .gallery{
         margin: 40px auto 104px auto;
         flex-direction: column;
         gap: 139px;
     }
 
-    .painting_heading{
+    .gallery_heading{
         align-self: start;
     }
 
-    .painting_image{
+    .gallery_image{
         width: 475px;
         height: 560px;
     }
 
-    .painting_title{
+    .gallery_title{
         width: 445px;
         right: -213px
     }
 
-    .painting_author{
+    .gallery_author{
         bottom: 130px;
     }
 
-    .painting_title h1{
+    .gallery_title h1{
         font-size: 3.5rem;
         line-height: 64px;
     }
 
-    .painting_content{
+    .gallery_content{
         width: 457px;
     }
 
-    .painting_year{
+    .gallery_year{
         font-size: 12.5rem;
         left: -115px;
         top: -75px;
     }
 
-    .painting_source{
+    .gallery_source{
         bottom: -51px;
     }
 }
 
 @media(max-width: 700px){
-    .painting{
+    .gallery{
         gap: 172px;
         margin-bottom: 146px;
     }
 
-    .painting_image{
+    .gallery_image{
         width: 100%;
         object-fit: contain;
         height: auto;
     }
 
-    .painting_title{
+    .gallerytitle{
         width: 85%;
         min-height: 104px;
         padding: 0px 0px 0px 24px;
@@ -265,12 +237,12 @@
         left: 0px;
     }
 
-    .painting_title h1{
+    .gallery_title h1{
         font-size: 1.5rem;
         line-height: 29px;
     }
 
-    .painting_author{
+    .gallery_author{
         width: 64px;
         height: 64px;
         bottom: -118px;
@@ -278,18 +250,18 @@
         left: 0px;
     }
 
-    .painting_content{
+    .gallery_content{
         width: 327px;
     }
 
-    .painting_year{
+    .gallery_year{
         font-size: 6.25rem;
         left: initial;
         right: 0px;
         top: -100px;
     }
 
-    .painting_source{
+    .gallery_source{
         bottom: -79px;
     }
 }
