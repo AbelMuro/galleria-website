@@ -21,7 +21,7 @@ function Home() {
                 const url = gallery.images.thumbnail;
 
                 return(
-                    <div className={styles.gallery}>
+                    <div className={styles.gallery} key={title}>
                         <img className={styles.gallery_image} src={url}/>
                         <div className={styles.gallery_content}>
                             <h1 className={styles.gallery_title}>

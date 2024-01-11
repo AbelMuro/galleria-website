@@ -213,6 +213,13 @@
     }
 }
 
+@media(max-width: 730px){
+    .gallery_title{
+        width: 400px;
+        right: -168px;
+    }
+}
+
 @media(max-width: 700px){
     .gallery{
         gap: 172px;
@@ -225,7 +232,7 @@
         height: auto;
     }
 
-    .gallerytitle{
+    .gallery_title{
         width: 85%;
         min-height: 104px;
         padding: 0px 0px 0px 24px;

@@ -43,7 +43,6 @@
     display: none;
     justify-content: center;
     align-items: center;
-    overflow: scroll;
 }
 
 .gallery{
@@ -96,7 +95,7 @@
     }
 }
 
-@media(max-width: 550px){
+@media(max-width: 700px){
     .view{
         top: 16px;
         left: 16px;
