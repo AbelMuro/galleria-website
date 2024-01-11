@@ -6,6 +6,8 @@ export default function galleryReducer(state = {allGalleries: galleryData, curre
             return {allGalleries: state.allGalleries, currentGallery: state.currentGallery + 1};
         case 'PREV_GALLERY':
             return {allGalleries: state.allGalleries, currentGallery: state.currentGallery - 1};
+        case 'SET_GALLERY':
+            return {allGalleries: state.allGalleries, currentGallery: action.id};
         default: 
             return state;
     }
