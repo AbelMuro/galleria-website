@@ -1,16 +1,20 @@
-import React, {useState, useEffect} from 'react';
-import Gallery from './Gallery';
+import React, {useState, useEffect, useRef} from 'react';
+import ViewImage from './ViewImage';
 import MediaButtons from './MediaButtons';
-import { useParams } from 'react-router-dom';
+import { useParams} from 'react-router-dom';
 import useMediaQuery from '~/Hooks/useMediaQuery.js';
 import styles from './styles.module.css';
-import { useSelector } from 'react-redux';
+import { useSelector} from 'react-redux';
 
-function DisplayPainting() {
-    const [mobile] = useMediaQuery('(max-width: 700px)');
-    const {paintingName} = useParams();
+
+function DisplayGallery() {
     const allGalleries = useSelector(state => state.allGalleries);
-    const [gallery, setGallery] = useState();
+    const [gallery, setGallery] = useState();    
+    const [mobile] = useMediaQuery('(max-width: 700px)');
+    const [tablet] = useMediaQuery('(max-width: 950px) and (min-width: 700px)');
+    const authorImageRef = useRef();
+    const galleryTitleRef = useRef();
+    const {galleryName} = useParams();
 
     const handleImages = (images) => {
         let large = images.large;
@@ -18,19 +22,36 @@ function DisplayPainting() {
         return mobile ? small : large;
     }
 
+    //using the parameter of URL to decide which gallery to display
     useEffect(() => {
-        const name = paintingName.replaceAll('-', ' ');
+        const name = galleryName.replaceAll('_', ' ');
         const galleryInfo = allGalleries.filter((gallery) => gallery.name === name && gallery)[0];
         setGallery(galleryInfo);
-    }, [paintingName])
+    }, [galleryName]);
+
+
+    useEffect(() => {
+        return;
+        if(tablet){
+            setTimeout(() => {
+                if(!galleryTitleRef.current || !authorImageRef.current) return;
+                const height = getComputedStyle(galleryTitleRef.current).height.replace('px', '');
+                authorImageRef.current.style.top = `${Number(height)}px`             
+            }, 10)         //we wait until the transition is finished before we get the height of element
+        }
+        else {
+            if(!authorImageRef.current) return;
+            authorImageRef.current.style.top = '';
+        }
+    }, [tablet, gallery])
 
     return (<>
                 {gallery && 
                     <main className={styles.gallery}>
                         <section className={styles.gallery_heading}>
-                            <Gallery image={gallery.images.gallery}/>
+                            <ViewImage image={gallery.images.gallery}/>
                             <img className={styles.gallery_image} src={handleImages(gallery.images.hero)}/>
-                            <div className={styles.gallery_title}>
+                            <div className={styles.gallery_title} ref={galleryTitleRef}>
                                 <h1>
                                     {gallery.name}
                                 </h1>
@@ -38,7 +59,7 @@ function DisplayPainting() {
                                     {gallery.artist.name}
                                 </h2>
                             </div>
-                            <img className={styles.gallery_author} src={gallery.artist.image}/>
+                            <img className={styles.gallery_author} src={gallery.artist.image} ref={authorImageRef}/>
                         </section>
                         <section className={styles.gallery_content}>
                             <strong className={styles.gallery_year}>
@@ -56,12 +77,11 @@ function DisplayPainting() {
                         <MediaButtons 
                             id={gallery.id} 
                             title={gallery.name} 
-                            author={gallery.artist.name}
-                            setPainting={setGallery}/>}
+                            author={gallery.artist.name}/>}
 
             </>)
 
     
 }
 
-export default DisplayPainting;
+export default DisplayGallery;

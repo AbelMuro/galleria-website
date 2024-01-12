@@ -1,15 +1,17 @@
 import React from 'react';
 import {useSelector} from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import {useDispatch} from 'react-redux';
 import styles from './styles.module.css';
 
 function Home() {
     const allGalleries = useSelector(state => state.allGalleries);
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     const handleSelect = (e) => {
-        let name = e.target.getAttribute('data-name');
-        name = name.replaceAll(' ','-')
+        let name = e.target.getAttribute('data-name');  
+        name = name.replaceAll(' ','_')
         navigate(name);
     }
 

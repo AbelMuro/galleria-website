@@ -2,7 +2,7 @@ import React, {useEffect, useRef, useState} from 'react';
 import icons from './icons';
 import styles from './styles.module.css';
 
-function Gallery({image}) {
+function ViewImage({image}) {
     const [open, setOpen] = useState(false);
     const overlayRef = useRef();
     const imageRef = useRef();
@@ -51,4 +51,4 @@ function Gallery({image}) {
     )
 }
 
-export default Gallery;
+export default ViewImage;

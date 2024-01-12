@@ -1,13 +1,11 @@
 import galleryData from './Data';
 
-export default function galleryReducer(state = {allGalleries: galleryData, currentGallery: 1}, action){
+export default function galleryReducer(state = {allGalleries: galleryData, slideshow: 0}, action){
     switch(action.type){
-        case 'NEXT_GALLERY':
-            return {allGalleries: state.allGalleries, currentGallery: state.currentGallery + 1};
-        case 'PREV_GALLERY':
-            return {allGalleries: state.allGalleries, currentGallery: state.currentGallery - 1};
-        case 'SET_GALLERY':
-            return {allGalleries: state.allGalleries, currentGallery: action.id};
+        case 'NEXT_SLIDESHOW':
+            return {...state, slideshow: state.slideshow + 1};
+        case 'RESET_SLIDESHOW':
+                return {...state, slideshow: 1}
         default: 
             return state;
     }

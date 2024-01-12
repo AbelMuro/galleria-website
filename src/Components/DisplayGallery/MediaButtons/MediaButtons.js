@@ -2,23 +2,28 @@ import React from 'react';
 import ProgressBar from './ProgressBar';
 import styles from './styles.module.css';
 import {useSelector} from 'react-redux';
+import { useNavigate} from 'react-router-dom';
 
-function MediaButtons({id, title, author, setPainting}) {
+function MediaButtons({id, title, author}) {
     const allGalleries = useSelector(state => state.allGalleries);
+    const navigate = useNavigate();
 
     const handleForward = () => {
+        window.scrollTo({top: 0, behavior: 'smooth'});
         const next = allGalleries.filter((painting) => painting.id === Number(id) + 1 && painting)[0];
-        next && setPainting(next);
+        next && navigate(`/${next.name.replaceAll(' ', '_')}`);
     }
 
     const handleBack = () => {
+        window.scrollTo({top: 0, behavior: 'smooth'});
         const back = allGalleries.filter((painting) => painting.id === Number(id) - 1 && painting)[0];
-        back && setPainting(back);
+        back && navigate(`/${back.name.replaceAll(' ', '_')}`);
     }
+
 
     return(
         <footer className={styles.media}>
-            <ProgressBar/>
+            <ProgressBar percent={id} total={allGalleries.length}/>
             <div className={styles.media_content}>
                 <h3>
                     {title}

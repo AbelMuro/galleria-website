@@ -1,6 +1,6 @@
 import React from 'react';
 import HeaderBar from './Components/HeaderBar'
-import DisplayPainting from './Components/DisplayPainting';
+import DisplayGallery from './Components/DisplayGallery';
 import Home from './Pages/Home';
 import Store from './Store';
 import { Provider } from 'react-redux';
@@ -14,7 +14,7 @@ function App () {
                 <HeaderBar/>
                 <Routes>
                     <Route path='/' element={<Home/>}/>
-                    <Route path=':paintingName' element={<DisplayPainting/>}/>
+                    <Route path=':galleryName' element={<DisplayGallery/>}/>
                 </Routes>
             </BrowserRouter>            
         </Provider>
