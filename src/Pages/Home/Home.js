@@ -2,8 +2,6 @@ import React from 'react';
 import {useSelector} from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import styles from './styles.module.css';
-import {motion} from 'framer-motion';
-import {galleryVariant} from './Variants'
 
 function Home() {
     const allGalleries = useSelector(state => state.allGalleries);
