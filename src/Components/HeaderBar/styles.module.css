@@ -3,9 +3,17 @@
     height: 128px;
     border-bottom: 1px solid #E5E5E5;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     margin: auto;
+}
+
+.header_content{
+    width: 1360px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: none;
 }
 
 .header_logo{
@@ -40,11 +48,14 @@
     }
 }
 
-@media(max-width: 700px){
+@media(max-width: 950px){
     .header{
-        padding: 0px 40px;
         width: 100%;
         height: 88px;
+    }
+
+    .header_content{
+        width: 93%;
     }
 
     .header_logo{
@@ -53,10 +64,13 @@
     }
 }
 
-@media(max-width: 530px){
+@media(max-width: 700px){
     .header{
         height: 79px;
-        padding: 0px 24px;
+    }
+    
+    .header_content{
+        width: 90%;
     }
 
     .header_startSlideshow{

@@ -6,13 +6,22 @@
     left: 0;
     right: 0;
     margin: auto;
-    accent-color: black;
+    appearance: none;
+    -webkit-appearance: none;     /* for safari */
+    color: black;               /* edge (moving part of progress bar)*/
+    background-color: #E5E5E5;   /* firefox and EDGE (background of progress bar) */
 }
 
+/* firefox (moving part of progress bar)*/
 .progressBar::-moz-progress-bar{ 
     background-color: black; 
 }
 
+
+/* chrome and safari*/
 .progressBar::-webkit-progress-value { 
     background-color: black; 
+}
+.progressBar::-webkit-progress-bar{
+    background-color: #E5E5E5;
 }

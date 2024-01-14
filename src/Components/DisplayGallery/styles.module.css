@@ -75,7 +75,7 @@
     font-size: 0.875rem;
     font-style: normal;
     font-weight: 700;
-    line-height: 28px; /* 200% */ 
+    line-height: 28px; 
     position: relative;
     z-index: var(--closer);
 }
@@ -222,6 +222,7 @@
 
 @media(max-width: 700px){
     .gallery{
+        width: 90%;
         gap: 172px;
         margin-bottom: 146px;
     }
@@ -234,13 +235,13 @@
 
     .gallery_title{
         width: 85%;
-        min-height: 104px;
-        padding: 0px 0px 0px 24px;
-        justify-content: center;
+        min-height: 80px;
+        padding: 24px 24px 0px 24px;
+        justify-content: start;
         gap: 8px;
         top: initial;
         right: initial;
-        bottom: -54px;
+        bottom: -28px;
         left: 0px;
     }
 
@@ -258,7 +259,7 @@
     }
 
     .gallery_content{
-        width: 327px;
+        width: 100%;
     }
 
     .gallery_year{

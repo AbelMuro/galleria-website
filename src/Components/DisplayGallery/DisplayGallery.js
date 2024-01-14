@@ -1,20 +1,20 @@
 import React, {useState, useEffect, useRef} from 'react';
 import ViewImage from './ViewImage';
 import MediaButtons from './MediaButtons';
-import { useParams} from 'react-router-dom';
+import { useParams, useNavigate} from 'react-router-dom';
 import useMediaQuery from '~/Hooks/useMediaQuery.js';
 import styles from './styles.module.css';
 import { useSelector} from 'react-redux';
-
 
 function DisplayGallery() {
     const allGalleries = useSelector(state => state.allGalleries);
     const [gallery, setGallery] = useState();    
     const [mobile] = useMediaQuery('(max-width: 700px)');
-    const [tablet] = useMediaQuery('(max-width: 950px) and (min-width: 700px)');
+    const [tablet] = useMediaQuery('(max-width: 950px) and (min-width: 701px)');
     const authorImageRef = useRef();
     const galleryTitleRef = useRef();
     const {galleryName} = useParams();
+    const navigate = useNavigate();
 
     const handleImages = (images) => {
         let large = images.large;
@@ -26,24 +26,29 @@ function DisplayGallery() {
     useEffect(() => {
         const name = galleryName.replaceAll('_', ' ');
         const galleryInfo = allGalleries.filter((gallery) => gallery.name === name && gallery)[0];
+        if(!galleryInfo)
+            navigate('/');
+
         setGallery(galleryInfo);
     }, [galleryName]);
 
 
     useEffect(() => {
-        return;
         if(tablet){
             setTimeout(() => {
                 if(!galleryTitleRef.current || !authorImageRef.current) return;
-                const height = getComputedStyle(galleryTitleRef.current).height.replace('px', '');
-                authorImageRef.current.style.top = `${Number(height)}px`             
-            }, 10)         //we wait until the transition is finished before we get the height of element
+                const height = galleryTitleRef.current.getBoundingClientRect().height;
+                if(!mobile)
+                    authorImageRef.current.style.top = `${height}px`             
+            }, 200)         //we wait until the transition is finished before we get the height of element
         }
         else {
-            if(!authorImageRef.current) return;
-            authorImageRef.current.style.top = '';
+            setTimeout(() => {
+                if(!authorImageRef.current) return;
+                authorImageRef.current.style.top = '';
+            }, 200)
         }
-    }, [tablet, gallery])
+    }, [tablet, mobile, gallery])
 
     return (<>
                 {gallery && 
@@ -73,11 +78,7 @@ function DisplayGallery() {
                             </a>                       
                         </section>
                     </main>}
-                    {gallery && 
-                        <MediaButtons 
-                            id={gallery.id} 
-                            title={gallery.name} 
-                            author={gallery.artist.name}/>}
+                    {gallery && <MediaButtons id={gallery.id} title={gallery.name} author={gallery.artist.name}/>}
 
             </>)
 
