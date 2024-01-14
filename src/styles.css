@@ -28,5 +28,5 @@ body{
 
 * {
     box-sizing: border-box;
-    transition: all 0.2s linear;
+    transition: all 0.2s linear, opacity 0s;
 }

@@ -14,6 +14,7 @@ function HeaderBar() {
     const navigate = useNavigate();
 
     const handleHome = () => {
+        dispatch({type: 'STOP_SLIDESHOW'});
         navigate('/');
     }
 

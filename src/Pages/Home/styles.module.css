@@ -2,12 +2,12 @@
     width: 1360px;
     column-count: 4;
     -webkit-column: 4;
+    column-fill: balance;
     column-gap: 40px;
     margin: 40px auto 0px auto;
 }
 
 .gallery{
-    align-self: start;
     position: relative;
     height: auto;
     cursor: pointer;
@@ -98,6 +98,13 @@
 
     .gallery_title{
         font-size: 1.3rem;
+    }
+}
+
+@media(max-width: 1050px){
+    .home{
+        column-count: 3;
+        -webkit-column-count: 3;
     }
 }
 
