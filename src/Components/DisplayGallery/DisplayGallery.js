@@ -39,13 +39,13 @@ function DisplayGallery() {
                 if(!galleryTitleRef.current || !authorImageRef.current) return;
                 const height = galleryTitleRef.current.getBoundingClientRect().height;
                 if(!mobile)
-                    authorImageRef.current.style.top = `${height}px`             
+                    authorImageRef.current.style.bottom = `${(560- height) - 128}px`             
             }, 200)         //we wait until the transition is finished before we get the height of element
         }
         else {
             setTimeout(() => {
                 if(!authorImageRef.current) return;
-                authorImageRef.current.style.top = '';
+                authorImageRef.current.style.bottom = '';
             }, 200)
         }
     }, [tablet, mobile, gallery])

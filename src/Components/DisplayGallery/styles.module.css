@@ -16,12 +16,14 @@
     width: 475px;
     height: 560px;
     display: block;
+    position: relative;
+    z-index: var(--far);
 }
 
 
 .gallery_title{
     position: absolute;
-    z-index: var(--far);
+    z-index: var(--close);
     padding: 0px 0px 67px 65px;
     top: 0px;
     right: -380px;
@@ -58,7 +60,7 @@
     width: 128px;
     height: 128px;
     position: absolute;
-    z-index: var(--even-closer);
+    z-index: var(--farther);    
     right: -158px;
     bottom: -64px;
 }
@@ -187,10 +189,6 @@
     .gallery_title{
         width: 445px;
         right: -213px
-    }
-
-    .gallery_author{
-        bottom: 130px;
     }
 
     .gallery_title h1{
