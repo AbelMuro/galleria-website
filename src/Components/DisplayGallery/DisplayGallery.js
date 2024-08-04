@@ -55,7 +55,7 @@ function DisplayGallery() {
                     <main className={styles.gallery}>
                         <section className={styles.gallery_heading}>
                             <ViewImage image={gallery.images.gallery}/>
-                            <img className={styles.gallery_image} src={handleImages(gallery.images.hero)}/>
+                            <img className={styles.gallery_image} src={handleImages(gallery.images.hero)} alt='gallery image'/>
                             <div className={styles.gallery_title} ref={galleryTitleRef}>
                                 <h1>
                                     {gallery.name}
@@ -64,7 +64,7 @@ function DisplayGallery() {
                                     {gallery.artist.name}
                                 </h2>
                             </div>
-                            <img className={styles.gallery_author} src={gallery.artist.image} ref={authorImageRef}/>
+                            <img className={styles.gallery_author} src={gallery.artist.image} ref={authorImageRef} alt='gallery author'/>
                         </section>
                         <section className={styles.gallery_content}>
                             <strong className={styles.gallery_year}>

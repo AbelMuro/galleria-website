@@ -22,7 +22,7 @@ function Home() {
 
                 return(
                     <div className={styles.gallery} key={title}>
-                            <img className={styles.gallery_image} src={url}/>
+                            <img className={styles.gallery_image} src={url} alt='gallery image'/>
                             <div className={styles.gallery_content}>
                                 <h1 className={styles.gallery_title}>
                                     {title}

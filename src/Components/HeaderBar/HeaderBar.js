@@ -56,7 +56,7 @@ function HeaderBar() {
     return(
         <header className={styles.header}> 
             <div className={styles.header_content}>
-                <img src={icons['logo']} className={styles.header_logo} onClick={handleHome}/>
+                <img src={icons['logo']} className={styles.header_logo} onClick={handleHome} alt='logo'/>
                 <button className={styles.header_startSlideshow} onClick={start ? startSlideshow : stopSlideshow}>
                     {start ? 'start slideshow' : 'stop slideshow'}
                 </button>                

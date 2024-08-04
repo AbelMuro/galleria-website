@@ -33,7 +33,7 @@ function ViewImage({image}) {
     return(       
         <>
             <button className={styles.view} onClick={handleOpen}>
-                <img src={icons['view']}/>
+                <img src={icons['view']} alt='expand icon'/>
                 View image
             </button>     
             <div className={styles.overlay} ref={overlayRef}>
@@ -42,7 +42,7 @@ function ViewImage({image}) {
                         <button className={styles.gallery_close} onClick={handleOpen}>
                             close
                         </button>                        
-                        <img className={styles.gallery_image} src={image} ref={imageRef}/>                        
+                        <img className={styles.gallery_image} src={image} ref={imageRef} alt='gallery image'/>                        
                     </div>
                 </section>
             </div>   
